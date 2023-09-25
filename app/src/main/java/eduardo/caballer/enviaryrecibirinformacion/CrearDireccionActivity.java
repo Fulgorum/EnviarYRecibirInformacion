@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import eduardo.caballer.enviaryrecibirinformacion.modelos.Direccion;
-import eduardo.caballer.enviaryrecibirinformacion.modelos.Usuario;
 
 public class CrearDireccionActivity extends AppCompatActivity {
 
@@ -31,21 +30,26 @@ public class CrearDireccionActivity extends AppCompatActivity {
                 String calle = txtCalle.getText().toString();
                 int numero = Integer.parseInt(txtNumero.getText().toString());
                 String ciudad = txtCiudad.getText().toString();
+
                 Direccion direccion = new Direccion(calle, numero, ciudad);
-                Intent intent = new Intent(CrearDireccionActivity.this, DesencriptarActivity.class);
+
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("DIR", direccion);
+                Intent intent = new Intent();
                 intent.putExtras(bundle);
-                startActivity(intent);
+                //Ha funcionado bien
+                setResult(RESULT_OK, intent);
+                //Terminar actividad
+                finish();
             }
         });
     }
 
     private void inicializarVista() {
-        txtCalle = findViewById(R.id.txtCalleDireccion);
-        txtNumero = findViewById(R.id.txtNumeroDireccion);
-        txtCiudad = findViewById(R.id.txtCiudadDireccion);
-        btnCrear = findViewById(R.id.btnCrearDireccion);
+        txtCalle = findViewById(R.id.txtCalleCrear);
+        txtNumero = findViewById(R.id.txtNumeroCrear);
+        txtCiudad = findViewById(R.id.txtCiudadCrear);
+        btnCrear = findViewById(R.id.btnCrearDireccionCrear);
 
     }
 }
