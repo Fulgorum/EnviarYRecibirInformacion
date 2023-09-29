@@ -1,4 +1,4 @@
-package eduardo.caballer.ejercicio2clase;
+package eduardo.caballer.ejercicio2clase.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import eduardo.caballer.ejercicio2clase.R;
 
 public class BicisActivity extends AppCompatActivity {
     private EditText txtMarca;

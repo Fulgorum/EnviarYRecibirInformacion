@@ -1,4 +1,4 @@
-package eduardo.caballer.ejercicio2clase;
+package eduardo.caballer.ejercicio2clase.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,10 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class CochesActivity extends AppCompatActivity {
+import eduardo.caballer.ejercicio2clase.R;
+
+public class MotosActivity extends AppCompatActivity {
+
     private EditText txtMarca;
     private EditText txtModelo;
-    private EditText txtColor;
+    private EditText txtCilindrada;
 
     private Button btnCancelar;
     private Button btnCrear;
@@ -19,7 +22,7 @@ public class CochesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_coches);
+        setContentView(R.layout.activity_motos);
 
         inicializarVista();
 
@@ -34,24 +37,24 @@ public class CochesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (txtMarca.getText().toString().isEmpty() || txtModelo.getText().toString().isEmpty()
-                        || txtColor.getText().toString().isEmpty()) {
-                    Toast.makeText(CochesActivity.this,
+                        || txtCilindrada.getText().toString().isEmpty()) {
+                    Toast.makeText(MotosActivity.this,
                             "Tienes que rellenar los datos necesarios",
                             Toast.LENGTH_SHORT).show();
-                } else {
+                }else {
 
-                    Toast.makeText(CochesActivity.this, "Creado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MotosActivity.this, "Moto creada", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
     private void inicializarVista() {
-        txtMarca = findViewById(R.id.txtMarcaCoche);
-        txtModelo = findViewById(R.id.txtModeloCoche);
-        txtColor = findViewById(R.id.txtColorCoche);
+        txtMarca = findViewById(R.id.txtMarcaMoto);
+        txtModelo = findViewById(R.id.txtModeloMoto);
+        txtCilindrada = findViewById(R.id.txtCilindradaMoto);
 
-        btnCancelar = findViewById(R.id.btnCancelarCoche);
-        btnCrear = findViewById(R.id.btnCrearCoche);
+        btnCancelar = findViewById(R.id.btnCancelarMoto);
+        btnCrear = findViewById(R.id.btnCrearMoto);
     }
 }
