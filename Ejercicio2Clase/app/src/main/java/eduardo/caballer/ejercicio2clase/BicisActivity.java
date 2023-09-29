@@ -3,12 +3,13 @@ package eduardo.caballer.ejercicio2clase;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BicisActivity extends AppCompatActivity {
-    private TextView txtLabel;
     private EditText txtMarca;
     private EditText txtPulgadas;
     private Button btnCancelar;
@@ -20,10 +21,30 @@ public class BicisActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bicis);
 
         inicializarVista();
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        btnCrear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (txtMarca.getText().toString().isEmpty() || txtPulgadas.getText().toString().isEmpty()) {
+                    Toast.makeText(BicisActivity.this,
+                            "Tienes que rellenar los datos necesarios",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+
+                    Toast.makeText(BicisActivity.this, "Bici creada", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void inicializarVista() {
-        txtLabel = findViewById(R.id.txtLabelBici);
 
         txtMarca = findViewById(R.id.txtMarcaBici);
         txtPulgadas = findViewById(R.id.txtPulgadaBici);
