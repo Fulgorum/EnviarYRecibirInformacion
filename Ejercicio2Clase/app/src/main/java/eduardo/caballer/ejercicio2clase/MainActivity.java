@@ -1,18 +1,17 @@
 package eduardo.caballer.ejercicio2clase;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.service.carrier.CarrierMessagingService;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -115,8 +114,31 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 irActividadCreacion(BicisActivity.class);
+                launcherBicis.launch(new Intent(MainActivity.this, BicisActivity.class));
             }
         });
+
+        launcherBicis = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == RESULT_OK) {
+                            if (result.getData() != null && result.getData().getExtras() != null) {
+                                Bici bici = (Bici) result.getData().getExtras().getSerializable("BICI");
+                                if (bici != null) {
+                                    listaBicis.add(bici);
+                                    txtBicis.setText("Bicis: " + listaBicis.size());
+                                } else {
+                                    Toast.makeText(MainActivity.this, "NO HAY MOTO", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(MainActivity.this, "NO HAY DATOS", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(MainActivity.this, "ACTIVIDAD CANCELADA", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
     }
 
 
