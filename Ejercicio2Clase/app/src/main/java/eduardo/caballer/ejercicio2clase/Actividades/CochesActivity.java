@@ -2,12 +2,14 @@ package eduardo.caballer.ejercicio2clase.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import eduardo.caballer.ejercicio2clase.Modelos.Coche;
 import eduardo.caballer.ejercicio2clase.R;
 
 public class CochesActivity extends AppCompatActivity {
@@ -28,6 +30,7 @@ public class CochesActivity extends AppCompatActivity {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setResult(RESULT_CANCELED);
                 finish();
             }
         });
@@ -35,14 +38,26 @@ public class CochesActivity extends AppCompatActivity {
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (txtMarca.getText().toString().isEmpty() || txtModelo.getText().toString().isEmpty()
-                        || txtColor.getText().toString().isEmpty()) {
+                String marca = txtMarca.getText().toString();
+                String modelo = txtModelo.getText().toString();
+                String color = txtColor.getText().toString();
+
+                if (marca.isEmpty() || modelo.isEmpty() || color.isEmpty()) {
                     Toast.makeText(CochesActivity.this,
                             "Tienes que rellenar los datos necesarios",
                             Toast.LENGTH_SHORT).show();
                 } else {
+                    Coche coche = new Coche(marca, modelo, color);
 
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("COCHE", coche);
+
+                    Intent intent = new Intent();
+                    intent.putExtras(bundle);
+
+                    setResult(RESULT_OK, intent);
                     Toast.makeText(CochesActivity.this, "Creado", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });

@@ -2,12 +2,14 @@ package eduardo.caballer.ejercicio2clase.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import eduardo.caballer.ejercicio2clase.Modelos.Moto;
 import eduardo.caballer.ejercicio2clase.R;
 
 public class MotosActivity extends AppCompatActivity {
@@ -29,6 +31,7 @@ public class MotosActivity extends AppCompatActivity {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setResult(RESULT_CANCELED);
                 finish();
             }
         });
@@ -36,14 +39,26 @@ public class MotosActivity extends AppCompatActivity {
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (txtMarca.getText().toString().isEmpty() || txtModelo.getText().toString().isEmpty()
-                        || txtCilindrada.getText().toString().isEmpty()) {
+                String marca = txtMarca.getText().toString();
+                String modelo = txtModelo.getText().toString();
+                String cilindrada = txtCilindrada.getText().toString();
+
+                if (marca.isEmpty() || modelo.isEmpty() || cilindrada.isEmpty()) {
                     Toast.makeText(MotosActivity.this,
                             "Tienes que rellenar los datos necesarios",
                             Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
+                    Moto moto = new Moto(marca, modelo, cilindrada);
 
-                Toast.makeText(MotosActivity.this, "Moto creada", Toast.LENGTH_SHORT).show();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("MOTO", moto);
+
+                    Intent intent = new Intent();
+                    intent.putExtras(bundle);
+
+                    setResult(RESULT_OK, intent);
+                    Toast.makeText(MotosActivity.this, "Moto creada", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });

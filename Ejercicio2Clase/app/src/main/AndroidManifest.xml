@@ -25,12 +25,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Actividades.BicisActivity">
+        <activity
+            android:name=".Actividades.BicisActivity"
+            android:exported="false" />
 
-        </activity>
-        <activity android:name=".Actividades.MotosActivity">
 
-        </activity>
+        <activity
+            android:name=".Actividades.MotosActivity"
+            android:exported="false" />
+
+
     </application>
 
 </manifest>

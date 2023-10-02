@@ -2,12 +2,14 @@ package eduardo.caballer.ejercicio2clase.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import eduardo.caballer.ejercicio2clase.Modelos.Bici;
 import eduardo.caballer.ejercicio2clase.R;
 
 public class BicisActivity extends AppCompatActivity {
@@ -26,6 +28,7 @@ public class BicisActivity extends AppCompatActivity {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setResult(RESULT_CANCELED);
                 finish();
             }
         });
@@ -33,13 +36,25 @@ public class BicisActivity extends AppCompatActivity {
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (txtMarca.getText().toString().isEmpty() || txtPulgadas.getText().toString().isEmpty()) {
+                String marca = txtMarca.getText().toString();
+                String pulgadas = txtPulgadas.getText().toString();
+
+                if (marca.isEmpty() || pulgadas.isEmpty()) {
                     Toast.makeText(BicisActivity.this,
                             "Tienes que rellenar los datos necesarios",
                             Toast.LENGTH_SHORT).show();
                 } else {
+                    Bici bici = new Bici(marca, pulgadas);
 
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("BICI", bici);
+
+                    Intent intent = new Intent();
+                    intent.putExtras(bundle);
+
+                    setResult(RESULT_OK, intent);
                     Toast.makeText(BicisActivity.this, "Bici creada", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });
