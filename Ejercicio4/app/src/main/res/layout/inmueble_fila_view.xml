@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddInmueblesActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/lbNumeroInmubleView"
+            android:layout_width="287dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/direccion" />
+
+        <TextView
+            android:id="@+id/lbDireccionInmubleView"
+            android:layout_width="71dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/numero" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/lbCiudadInmubleView"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/ciudad" />
+
+        <RatingBar
+            android:id="@+id/lbValoracionInmubleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="@integer/valoracion"
+            android:rating="@dimen/valoracion" />
+    </LinearLayout>
+</LinearLayout>
