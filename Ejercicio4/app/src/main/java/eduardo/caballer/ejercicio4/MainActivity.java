@@ -2,7 +2,9 @@ package eduardo.caballer.ejercicio4;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                launcherInmueble.launch(new Intent(MainActivity.this, AddInmueblesActivity.class));
             }
         });
     }
@@ -69,6 +71,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void mostrasInmuebles() {
+
+        binding.contentMain.contenedorMain.removeAllViews();
+
+        for (Inmueble inmueble : listaInmuebles) {
+            LayoutInflater layoutInflater = LayoutInflater.from(MainActivity.this);
+
+            View inmuebleView = layoutInflater.inflate(R.layout.inmueble_fila_view, null);
+            TextView txtDireccion = inmuebleView.findViewById(R.id.lbDireccionInmubleView);
+            TextView txtNumero = inmuebleView.findViewById(R.id.lbNumeroInmubleView);
+            TextView txtCiudad = inmuebleView.findViewById(R.id.lbCiudadInmubleView);
+            TextView txtValoracion = inmuebleView.findViewById(R.id.lbValoracionInmubleView);
+
+            txtDireccion.setText(inmueble.getDireccion());
+            txtNumero.setText(inmueble.getNumero());
+            txtCiudad.setText(inmueble.getCiudad());
+            txtValoracion.setText((int) inmueble.getValoracion());
+
+            binding.contentMain.contenedorMain.addView(inmuebleView);
+        }
 
     }
 
