@@ -14,14 +14,14 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/lbNumeroInmubleView"
+            android:id="@+id/lbDireccionInmubleView"
             android:layout_width="287dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/direccion" />
 
         <TextView
-            android:id="@+id/lbDireccionInmubleView"
+            android:id="@+id/lbNumeroInmubleView"
             android:layout_width="71dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

@@ -65,7 +65,7 @@ public class AddInmueblesActivity extends AppCompatActivity {
         if (binding.txtAddCPInmueble.getText().toString().isEmpty()) {
             return null;
         }
-        if (binding.txtAddValoracionInmueble.getText().toString().isEmpty()) {
+        if (binding.txtAddValoracionInmueble.getRating() == 0) {
             return null;
         }
         Inmueble inmueble = new Inmueble(
@@ -74,7 +74,8 @@ public class AddInmueblesActivity extends AppCompatActivity {
                 binding.txtAddCiudadInmueble.getText().toString(),
                 binding.txtAddProvinciaInmueble.getText().toString(),
                 binding.txtAddCPInmueble.getText().toString(),
-                Float.parseFloat(binding.txtAddValoracionInmueble.getText().toString()));
+                binding.txtAddValoracionInmueble.getRating());
+
         return inmueble;
     }
 }

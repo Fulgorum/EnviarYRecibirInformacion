@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,12 +82,12 @@ public class MainActivity extends AppCompatActivity {
             TextView txtDireccion = inmuebleView.findViewById(R.id.lbDireccionInmubleView);
             TextView txtNumero = inmuebleView.findViewById(R.id.lbNumeroInmubleView);
             TextView txtCiudad = inmuebleView.findViewById(R.id.lbCiudadInmubleView);
-            TextView txtValoracion = inmuebleView.findViewById(R.id.lbValoracionInmubleView);
+            RatingBar txtValoracion = inmuebleView.findViewById(R.id.lbValoracionInmubleView);
 
             txtDireccion.setText(inmueble.getDireccion());
-            txtNumero.setText(inmueble.getNumero());
+            txtNumero.setText(String.valueOf(inmueble.getNumero()));
             txtCiudad.setText(inmueble.getCiudad());
-            txtValoracion.setText((int) inmueble.getValoracion());
+            txtValoracion.setRating(inmueble.getValoracion());
 
             binding.contentMain.contenedorMain.addView(inmuebleView);
         }
