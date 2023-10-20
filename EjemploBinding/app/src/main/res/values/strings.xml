@@ -8,6 +8,8 @@
     <string name="grupoc">GRUPO C</string>
     <string name="cancelar">CANCELAR</string>
     <string name="crear">CREAR</string>
+    <string name="eliminar">ELIMINAR</string>
+    <string name="editar">EDITAR</string>
     <string-array name="spciclos">
         <item>Selecciona ciclo</item>
         <item>SMR</item>

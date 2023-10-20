@@ -22,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private ActivityResultLauncher<Intent> launcherAlumno;
+    private ActivityResultLauncher<Intent> editAlumnoLauncher;
     private ArrayList<Alumno> listaAlumnos;
+    private int posicion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,30 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        editAlumnoLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        // Que ocurrira cuando vuelva de la actividad EDIT.
+                        if (result.getResultCode() == RESULT_OK) {
+                            if (result.getData() != null && result.getData().getExtras() != null) {
+                                //Pulsaron editar
+                                Alumno alumno = (Alumno) result.getData().getExtras().getSerializable("ALUMNO");
+                                listaAlumnos.set(posicion, alumno);
+                                mostrarAlumnos();
+                            } else {
+                                // pulsaron Borrar
+                                listaAlumnos.remove(posicion);
+                                mostrarAlumnos();
+                            }
+                        } else {
+                            Toast.makeText(MainActivity.this, "ACCIÓN CANCELADA", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
     }
 
     private void mostrarAlumnos() {
@@ -87,18 +113,25 @@ public class MainActivity extends AppCompatActivity {
             txtCiclo.setText(alumno.getCiclo());
             txtGrupo.setText(String.valueOf(alumno.getGrupo()));
 
+            alumnoView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Enviar el alumno.
+                    Intent intent = new Intent(MainActivity.this, EditAlumnoActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("ALUMNO", alumno);
+                    intent.putExtras(bundle);
+
+                    posicion = listaAlumnos.indexOf(alumno);
+                    // Recibir el alumno modificado o la orden de eliminar.
+                    editAlumnoLauncher.launch(intent);
+
+                }
+            });
+
             binding.contentMain.contnedorMain.addView(alumnoView);
 
         }
     }
-
-    /**
-     *
-     * TODO:
-     * 1. Elemento para mostrar la info del alumno en el principal(textView)
-     * 2. El conjunto de datos a mostra(listaAlumnos) OK
-     * 3. Contenedor para poner cada elemento alumno (Scroll)
-     * 4. La lógica para mostrar los elementos en el Scroll del principal.
-     */
 }
 
