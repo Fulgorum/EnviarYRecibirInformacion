@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private ActivityResultLauncher<Intent> launcherInmueble;
+    private ActivityResultLauncher<Intent> editInmueblelauncher;
     private ArrayList<Inmueble> listaInmuebles;
+    private int posicion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,24 @@ public class MainActivity extends AppCompatActivity {
 
                         } else {
                             Toast.makeText(MainActivity.this, "Acción Cancelada!!!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
+
+        editInmueblelauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == RESULT_OK) {
+                            if (result.getData() != null && result.getData().getExtras() != null) {
+                                Inmueble inmueble = (Inmueble) result.getData().getExtras().getSerializable("INMUEBLE");
+                                listaInmuebles.set(posicion, inmueble);
+                                mostrasInmuebles();
+                            } else {
+                                Toast.makeText(MainActivity.this, "ACCIÓN CANCELADA", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 }

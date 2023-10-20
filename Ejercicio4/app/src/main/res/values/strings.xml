@@ -8,6 +8,8 @@
     <string name="codigo_postal">Código postal</string>
     <string name="cancelar">CANCELAR</string>
     <string name="crear">CREAR</string>
+    <string name="modificar">MODIFICAR</string>
+    <string name="eliminar">ELIMINAR</string>
     <string name="valoracion">Valoración</string>
     <integer name="valoracion">5</integer>
     <dimen name="valoracion">0</dimen>
