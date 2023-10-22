@@ -83,8 +83,11 @@ public class MainActivity extends AppCompatActivity {
                                 listaInmuebles.set(posicion, inmueble);
                                 mostrasInmuebles();
                             } else {
-                                Toast.makeText(MainActivity.this, "ACCIÓN CANCELADA", Toast.LENGTH_SHORT).show();
+                                listaInmuebles.remove(posicion);
+                                mostrasInmuebles();
                             }
+                        } else {
+                            Toast.makeText(MainActivity.this, "ACCIÓN CANCELADA", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -108,6 +111,20 @@ public class MainActivity extends AppCompatActivity {
             txtNumero.setText(String.valueOf(inmueble.getNumero()));
             txtCiudad.setText(inmueble.getCiudad());
             txtValoracion.setRating(inmueble.getValoracion());
+
+            inmuebleView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MainActivity.this, EditInmubleActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("INMUEBLE", inmueble);
+                    intent.putExtras(bundle);
+
+                    posicion = listaInmuebles.indexOf(inmueble);
+
+                    editInmueblelauncher.launch(intent);
+                }
+            });
 
             binding.contentMain.contenedorMain.addView(inmuebleView);
         }
