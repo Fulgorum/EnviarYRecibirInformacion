@@ -65,17 +65,14 @@ public class AddInmueblesActivity extends AppCompatActivity {
         if (binding.txtAddCPInmueble.getText().toString().isEmpty()) {
             return null;
         }
-        if (binding.txtAddValoracionInmueble.getRating() == 0) {
-            return null;
-        }
-        Inmueble inmueble = new Inmueble(
+
+
+        return new Inmueble(
                 binding.txtAddDireccionInmueble.getText().toString(),
                 Integer.parseInt(binding.txtAddNumeroInmueble.getText().toString()),
                 binding.txtAddCiudadInmueble.getText().toString(),
                 binding.txtAddProvinciaInmueble.getText().toString(),
                 binding.txtAddCPInmueble.getText().toString(),
                 binding.txtAddValoracionInmueble.getRating());
-
-        return inmueble;
     }
 }

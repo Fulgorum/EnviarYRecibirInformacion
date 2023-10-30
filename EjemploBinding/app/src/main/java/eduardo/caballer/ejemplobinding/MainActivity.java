@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
+
 
         listaAlumnos = new ArrayList<>();
 
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void mostrarAlumnos() {
-        //eliminar lo que haya en el linea Layout
+        //eliminar lo que haya en el linear Layout
         binding.contentMain.contnedorMain.removeAllViews();
 
         for (Alumno alumno : listaAlumnos) {

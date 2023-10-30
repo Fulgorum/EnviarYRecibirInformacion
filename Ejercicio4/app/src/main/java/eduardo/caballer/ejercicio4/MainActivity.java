@@ -34,12 +34,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
-
         listaInmuebles = new ArrayList<>();
 
         inicializarLauncher();
-
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                             if (result.getData() != null && result.getData().getExtras() != null) {
                                 Inmueble inmueble = (Inmueble) result.getData().getExtras().getSerializable("INMUEBLE");
                                 listaInmuebles.add(inmueble);
-                                mostrasInmuebles();
+                                mostrarInmuebles();
                             } else {
                                 Toast.makeText(MainActivity.this, "No han llegado los datos...", Toast.LENGTH_SHORT).show();
                             }
@@ -81,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
                             if (result.getData() != null && result.getData().getExtras() != null) {
                                 Inmueble inmueble = (Inmueble) result.getData().getExtras().getSerializable("INMUEBLE");
                                 listaInmuebles.set(posicion, inmueble);
-                                mostrasInmuebles();
+                                mostrarInmuebles();
                             } else {
                                 listaInmuebles.remove(posicion);
-                                mostrasInmuebles();
+                                mostrarInmuebles();
                             }
                         } else {
                             Toast.makeText(MainActivity.this, "ACCIÓN CANCELADA", Toast.LENGTH_SHORT).show();
@@ -94,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
-    private void mostrasInmuebles() {
+    private void mostrarInmuebles() {
 
         binding.contentMain.contenedorMain.removeAllViews();
 
