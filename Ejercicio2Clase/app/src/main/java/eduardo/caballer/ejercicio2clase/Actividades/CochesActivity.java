@@ -56,7 +56,7 @@ public class CochesActivity extends AppCompatActivity {
                     intent.putExtras(bundle);
 
                     setResult(RESULT_OK, intent);
-                    Toast.makeText(CochesActivity.this, "Creado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CochesActivity.this, coche.toString(), Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
