@@ -3,6 +3,7 @@ package eduardo.caballer.pruebecilla;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,9 +22,21 @@ public class MainActivity extends AppCompatActivity {
 
         inicializarVariables();
 
+
+        btnPulsar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
+
     private void inicializarVariables() {
-        txtNombre
+        txtNombre = findViewById(R.id.txtNombreMain);
+        txtApellidos = findViewById(R.id.txtApellidosMain);
+        txtPassword = findViewById(R.id.txtPasswordMain);
+        btnPulsar = findViewById(R.id.btnPulsarMain);
     }
 }

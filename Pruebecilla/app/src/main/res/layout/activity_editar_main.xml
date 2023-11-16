@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".EditarMainActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -20,7 +20,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/txtNombreMain"
+            android:id="@+id/txtNombreEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -29,7 +29,7 @@
             android:inputType="text" />
 
         <EditText
-            android:id="@+id/txtApellidosMain"
+            android:id="@+id/txtApellidosEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -44,7 +44,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/txtPasswordMain"
+            android:id="@+id/txtPasswordEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -59,7 +59,7 @@
         android:orientation="horizontal"></LinearLayout>
 
     <Button
-        android:id="@+id/btnPulsarMain"
+        android:id="@+id/btnPulsarEdit"
         android:layout_width="match_parent"
         android:layout_height="614dp"
         android:text="PULSAME"
