@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CrearDireccionActivity.class);
-                // startActivity(intent);
-                // startActivityForResult(intent, DIRECCIONES);
                 launcherDirecciones.launch(intent);
             }
         });
@@ -86,33 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
     }
-
-    // requestCode -> identificador de la ventana o actividad que se ha cerrado.
-    // resultCode -> el modo en que se ha cerrado.
-    // data -> Datos retornados (intent con el bundle dentro,
-   /* @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        //Averiguar que actividad se cerró.
-        if (requestCode == DIRECCIONES) {
-            //Averiguar si se cerró con éxito.
-            if (resultCode == RESULT_OK) {
-                //Averiguar si vuelve con datos.
-                if (data != null) {
-                    Bundle bundle = data.getExtras();
-                    Direccion direccion = (Direccion) bundle.getSerializable("DIR");
-                    Toast.makeText(this, direccion.toString(), Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "NO HAY DATOS", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(this, "CANCELADA", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-    */
-
 
     private void inicializarVista() {
         txtPassword = findViewById(R.id.txtPasswordMain);

@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                     Product product = new Product(txtName.getText().toString(), Integer.parseInt(txtQuantity.getText().toString()), Float.parseFloat(txtPrice.getText().toString()));
                     productList.add(0, product);
                     adapter.notifyItemInserted(0);
-                   // Toast.makeText(MainActivity.this, product.toString(), Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(MainActivity.this, product.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -116,13 +116,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable("LIST",productList);
+        outState.putSerializable("LIST", productList);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        productList.addAll((ArrayList<Product> )savedInstanceState.getSerializable("LIST"));
-        adapter.notifyItemRangeChanged(0,productList.size());
+        productList.addAll((ArrayList<Product>) savedInstanceState.getSerializable("LIST"));
+        adapter.notifyItemRangeChanged(0, productList.size());
     }
 }
